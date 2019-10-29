@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright (c) Microsoft Corporation. All rights reserved.
+
+ Licensed under the MIT License. See LICENSE in the project root for
+ license information.
+
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.microsoft.azure.iaas</groupId>
+    <artifactId>root</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <name>${project.artifactId}</name>
+    <description>
+        
+    </description>
+    <url>https://github.com/Azure/azure-javaee-iaas</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:Azure/azure-javaee-iaas.git</connection>
+        <developerConnection>scm:git:git@github.com:Azure/azure-javaee-iaas.git</developerConnection>
+        <url>https://github.com/Azure/azure-javaee-iaas</url>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+      <artifactsLocationBase>https://raw.githubusercontent.com/wls-eng</artifactsLocationBase>
+    </properties>
+
+    <modules>
+      <module>arm-parent</module>
+      <module>arm-assembly</module>
+    </modules>
+
+</project>
