@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright (c) Microsoft Corporation. All rights reserved.
+
+ Licensed under the MIT License. See LICENSE in the project root for
+ license information.
+
+-->
+
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.microsoft.azure.iaas</groupId>
+  <artifactId>arm-assembly</artifactId>
+  <version>1.0.0</version>
+  <name>${project.artifactId}</name>
+</project>

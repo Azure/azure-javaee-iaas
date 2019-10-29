@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright (c) Microsoft Corporation. All rights reserved.
+
+ Licensed under the MIT License. See LICENSE in the project root for
+ license information.
+
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.microsoft.azure.iaas</groupId>
+    <artifactId>azure-javaee-iaas-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <name>${project.artifactId}</name>
+    <description>
+        
+    </description>
+    
+    <properties>
+      <git.tag>master</git.tag>
+      <git.repo>wls-eng</git.repo>
+      <artifactsLocationBase>https://raw.githubusercontent.com/${git.repo}</artifactsLocationBase>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <arm.assembly.version>1.0.0</arm.assembly.version>
+      <template.validation.tests.directory>${basedir}/../../azure-quickstart-templates/test/arm-ttk</template.validation.tests.directory>
+      <test.args>-Test all</test.args>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/arm</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/arm</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    <profiles>
+      <profile>
+        <id>template-validation-tests</id>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <version>3.1.1</version>
+              <dependencies>
+                <dependency>
+                  <groupId>com.microsoft.azure.iaas</groupId>
+                  <artifactId>arm-assembly</artifactId>
+                  <version>[${arm.assembly.version}]</version>
+                </dependency>
+              </dependencies>
+              <executions>
+                <execution>
+                  <id>make-assembly</id>
+                  <phase>package</phase>
+                  <goals>
+                    <goal>single</goal>
+                  </goals>
+                  <configuration>
+                    <descriptorRefs>
+                      <descriptorRef>arm-assembly</descriptorRef>
+                    </descriptorRefs>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>exec-maven-plugin</artifactId>
+              <version>1.6.0</version>
+              <executions>
+                <execution>
+                  <id>test</id>
+                  <phase>test</phase>
+                  <goals>
+                    <goal>exec</goal>
+                  </goals>
+                </execution>
+              </executions>
+              <configuration>
+                <workingDirectory>${template.validation.tests.directory}</workingDirectory>
+                <executable>sh</executable>
+                <commandlineArgs>Test-AzTemplate.sh -TemplatePath ${project.build.directory}/arm ${test.args}</commandlineArgs>
+              </configuration>
+            </plugin>  
+          </plugins>
+        </build>
+      </profile>
+    </profiles>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+</project>
