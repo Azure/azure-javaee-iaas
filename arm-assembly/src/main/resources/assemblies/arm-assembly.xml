@@ -6,15 +6,15 @@
     <format>zip</format>
   </formats>
   <includeBaseDirectory>false</includeBaseDirectory>
-  <baseDirectory>${project.build.directory}/arm</baseDirectory>  
+  <baseDirectory>${project.build.directory}</baseDirectory>  
   <fileSets>
     <fileSet>
       <directory>${project.build.directory}/arm</directory>
       <outputDirectory>/</outputDirectory>
-      <!-- we must include only these two files in the zip that we upload to Marketplace -->
       <includes>
         <include>createUiDefinition.json</include>
         <include>mainTemplate.json</include>
+        <include>**/scripts/*</include>
       </includes>
     </fileSet>
   </fileSets>
