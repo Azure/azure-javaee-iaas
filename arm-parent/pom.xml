@@ -14,7 +14,7 @@
     <groupId>com.microsoft.azure.iaas</groupId>
     <artifactId>azure-javaee-iaas-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>${project.artifactId}</name>
     <description>
         
@@ -25,7 +25,7 @@
       <git.repo>wls-eng</git.repo>
       <artifactsLocationBase>https://raw.githubusercontent.com/${git.repo}</artifactsLocationBase>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <arm.assembly.version>1.0.0</arm.assembly.version>
+      <arm.assembly.version>1.0.1</arm.assembly.version>
       <template.validation.tests.directory>${basedir}/../azure-quickstart-templates/test/arm-ttk</template.validation.tests.directory>
       <test.args>-Test all</test.args>
     </properties>
@@ -38,7 +38,7 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
+                        <id>copy-resources-01</id>
                         <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -48,6 +48,22 @@
                             <resources>
                                 <resource>
                                     <directory>src/main/arm</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-resources-02</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/arm/scripts</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/scripts</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
