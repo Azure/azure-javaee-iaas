@@ -28,6 +28,7 @@
       <arm.assembly.version>1.0.1</arm.assembly.version>
       <template.validation.tests.directory>${basedir}/../azure-quickstart-templates/test/arm-ttk</template.validation.tests.directory>
       <test.args>-Test all</test.args>
+      <test.parameters></test.parameters>
     </properties>
 
     <build>
@@ -122,7 +123,7 @@
               <configuration>
                 <workingDirectory>${template.validation.tests.directory}</workingDirectory>
                 <executable>sh</executable>
-                <commandlineArgs>Test-AzTemplate.sh -TemplatePath ${project.build.directory}/arm ${test.args}</commandlineArgs>
+                <commandlineArgs>Test-AzTemplate.sh -TemplatePath ${project.build.directory}/arm ${test.args} ${test.parameters}</commandlineArgs>
               </configuration>
             </plugin>  
           </plugins>
