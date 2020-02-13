@@ -26,7 +26,7 @@
       <artifactsLocationBase>https://raw.githubusercontent.com/${git.repo}</artifactsLocationBase>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <arm.assembly.version>1.0.1</arm.assembly.version>
-      <template.validation.tests.directory>${basedir}/../azure-quickstart-templates/test/arm-ttk</template.validation.tests.directory>
+      <template.validation.tests.directory>${basedir}/../arm-ttk/arm-ttk</template.validation.tests.directory>
       <test.args>-Test all</test.args>
       <test.parameters></test.parameters>
     </properties>
