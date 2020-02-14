@@ -22,13 +22,13 @@ Azure Applications (formerly known as Solution Templates) see
    ```
    
 4. Clone
-   [azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates)
+   [arm-ttk](https://github.com/Azure/arm-ttk)
    as a sibling of this directory.  This is necessary because the test
    phase of the `arm-parent` maven project will run the tests in
-   `${basedir}/../azure-quickstart-templates/test/arm-ttk` against your
+   `${basedir}/../arm-ttk/arm-ttk` against your
    solution template.  You must ensure the preconditions for running the
    tests are met, as described in the test documentation.  Test
-   documentation is found in [the arm-ttk subdirectory](https://github.com/Azure/azure-quickstart-templates/tree/master/test/arm-ttk).
+   documentation is found in [the arm-ttk subdirectory](https://github.com/Azure/arm-ttk/tree/master/arm-ttk).
 
    If you want to put the tests in a different location, set the
    `template.validation.tests.directory` property.
