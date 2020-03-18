@@ -14,7 +14,7 @@
     <groupId>com.microsoft.azure.iaas</groupId>
     <artifactId>azure-javaee-iaas-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>${project.artifactId}</name>
     <description>
         
@@ -129,6 +129,39 @@
           </plugins>
         </build>
       </profile>
+      <profile>
+        <id>assembly</id>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <version>3.1.1</version>
+              <dependencies>
+                <dependency>
+                  <groupId>com.microsoft.azure.iaas</groupId>
+                  <artifactId>arm-assembly</artifactId>
+                  <version>[${arm.assembly.version}]</version>
+                </dependency>
+              </dependencies>
+              <executions>
+                <execution>
+                  <id>make-assembly</id>
+                  <phase>package</phase>
+                  <goals>
+                    <goal>single</goal>
+                  </goals>
+                  <configuration>
+                    <descriptorRefs>
+                      <descriptorRef>arm-assembly</descriptorRef>
+                    </descriptorRefs>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>      
     </profiles>
 
     <licenses>
