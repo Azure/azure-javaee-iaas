@@ -14,7 +14,7 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <name>${project.artifactId}</name>
   <description></description>
 
@@ -27,6 +27,7 @@
     <template.validation.tests.directory>${basedir}/../arm-ttk/arm-ttk</template.validation.tests.directory>
     <test.args>-Test all</test.args>
     <test.parameters></test.parameters>
+    <template.pid.properties.url>https://raw.githubusercontent.com/Azure/azure-javaee-iaas/master/arm-parent/src/main/resources/default.properties</template.pid.properties.url>
   </properties>
 
   <build>
@@ -38,7 +39,7 @@
         <executions>
           <execution>
             <id>copy-resources-01</id>
-            <phase>validate</phase>
+            <phase>process-resources</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
@@ -54,7 +55,7 @@
           </execution>
           <execution>
             <id>copy-resources-02</id>
-            <phase>validate</phase>
+            <phase>process-resources</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
@@ -66,6 +67,24 @@
                   <filtering>true</filtering>
                 </resource>
               </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+          <execution>
+            <phase>initialize</phase>
+            <goals>
+              <goal>read-project-properties</goal>
+            </goals>
+            <configuration>
+              <urls>
+                <url>${template.pid.properties.url}</url>
+              </urls>
             </configuration>
           </execution>
         </executions>
