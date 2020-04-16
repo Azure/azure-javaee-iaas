@@ -14,7 +14,7 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <name>${project.artifactId}</name>
   <description></description>
 
@@ -23,7 +23,7 @@
     <git.repo>wls-eng</git.repo>
     <artifactsLocationBase>https://raw.githubusercontent.com/${git.repo}</artifactsLocationBase>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <arm.assembly.version>1.0.1</arm.assembly.version>
+    <arm.assembly.version>1.0.2</arm.assembly.version>
     <template.validation.tests.directory>${basedir}/../arm-ttk/arm-ttk</template.validation.tests.directory>
     <test.args>-Test all</test.args>
     <test.parameters></test.parameters>
