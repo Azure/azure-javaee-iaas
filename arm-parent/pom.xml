@@ -14,7 +14,7 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <name>${project.artifactId}</name>
   <description></description>
 
@@ -28,6 +28,7 @@
     <test.args>-Test all</test.args>
     <test.parameters></test.parameters>
     <template.pid.properties.url>https://raw.githubusercontent.com/Azure/azure-javaee-iaas/master/arm-parent/src/main/resources/default.properties</template.pid.properties.url>
+    <template.microsoft.pid.properties.url>${template.pid.properties.url}</template.microsoft.pid.properties.url>
   </properties>
 
   <build>
