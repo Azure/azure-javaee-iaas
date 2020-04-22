@@ -154,26 +154,12 @@ Please also read the [ARM Template Best Practices document](https://github.com/A
 
 ### General Lessons for `mainTemplate.json`
 
-* You must include start and end tracking pid in `resources`, pid is defined in property file whose uri is specified with properties `template.pid.properties.url` for production and `template.microsoft.pid.properties.url` for development in pom.xml. Like:
+* You must include tracking pid in `resources`, pid is defined in property file whose uri is specified with properties `template.pid.properties.url` for production and `template.microsoft.pid.properties.url` for development in pom.xml. Like:
 
    ```
    {
       "apiVersion": "2018-02-01",
       "name": "${admin.start}",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-         "mode": "Incremental",
-         "template": {
-            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-            "contentVersion": "1.0.0.0",
-            "resources": []
-         }
-      }
-   },
-   ...
-   {
-      "apiVersion": "2018-02-01",
-      "name": "${admin.end}",
       "type": "Microsoft.Resources/deployments",
       "properties": {
          "mode": "Incremental",
