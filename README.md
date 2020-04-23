@@ -158,18 +158,38 @@ Please also read the [ARM Template Best Practices document](https://github.com/A
 
    ```
    {
-      "apiVersion": "2018-02-01",
-      "name": "${admin.start}",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-         "mode": "Incremental",
-         "template": {
-            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-            "contentVersion": "1.0.0.0",
-            "resources": []
-         }
-      }
-   }
+		"apiVersion": "2019-10-01",
+		"name": "${cluster.start}",
+		"type": "Microsoft.Resources/deployments",
+		"properties": {
+			"mode": "Incremental",
+			"template": {
+				"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+				"contentVersion": "1.0.0.0",
+				"resources": [
+				]
+			}
+		}
+	},
+   ...
+   {
+		"apiVersion": "2019-10-01",
+		"name": "${cluster.end}",
+		"type": "Microsoft.Resources/deployments",
+		"dependsOn": [
+			"[resourceId('Microsoft.Resources/deployments', 'clusterLinkedTemplate')]",
+			"[resourceId('Microsoft.Resources/deployments', 'keyVaultLinkedAppGatewayTemplate')]"
+		],
+		"properties": {
+			"mode": "Incremental",
+			"template": {
+				"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+				"contentVersion": "1.0.0.0",
+				"resources": [
+				]
+			}
+		}
+	}
 
    ```
 
