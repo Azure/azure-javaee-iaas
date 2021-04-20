@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
  Copyright (c) Microsoft Corporation. All rights reserved.
@@ -14,7 +14,7 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.8</version>
+  <version>1.0.9</version>
   <name>${project.artifactId}</name>
   <description></description>
 
@@ -81,6 +81,9 @@
               <resources>
                 <resource>
                   <directory>src/main/bicep</directory>
+                  <excludes>
+                    <exclude>/modules/pids/pid-dev.bicep</exclude>
+                  </excludes>
                   <filtering>true</filtering>
                 </resource>
               </resources>
@@ -149,25 +152,25 @@
       <id>bicep</id>
       <build>
         <plugins>
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>exec-maven-plugin</artifactId>
-              <version>1.6.0</version>
-              <executions>
-                <execution>
-                  <id>transpile-01</id>
-                  <phase>compile</phase>
-                  <goals>
-                    <goal>exec</goal>
-                  </goals>
-                  <configuration>
-                    <workingDirectory>${project.build.directory}/bicep</workingDirectory>
-                    <executable>bicep</executable>
-                    <commandlineArgs>build --outdir ${project.build.directory}/arm ${project.build.directory}/bicep/mainTemplate.bicep</commandlineArgs>
-                  </configuration>
-                </execution>
-              </executions>
-            </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.6.0</version>
+            <executions>
+              <execution>
+                <id>transpile-01</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <workingDirectory>${project.build.directory}/bicep</workingDirectory>
+                  <executable>bicep</executable>
+                  <commandlineArgs>build --outdir ${project.build.directory}/arm ${project.build.directory}/bicep/mainTemplate.bicep</commandlineArgs>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -208,7 +211,7 @@
       <id>dev</id>
       <activation>
         <property>
-            <name>dev</name>
+          <name>dev</name>
         </property>
       </activation>
       <properties>
@@ -230,6 +233,26 @@
                   <urls>
                     <url>${template.microsoft.pid.properties.url}</url>
                   </urls>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>com.coderplus.maven.plugins</groupId>
+            <artifactId>copy-rename-maven-plugin</artifactId>
+            <version>1.0.1</version>
+            <executions>
+              <execution>
+                <id>copy-resources-04</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>copy</goal>
+                </goals>
+                <configuration>
+                  <sourceFile>src/main/bicep/modules/pids/pid-dev.bicep</sourceFile>
+                  <destinationFile>${project.build.directory}/bicep/modules/pids/pid.bicep</destinationFile>
+                  <ignoreFileNotFoundOnIncremental>true</ignoreFileNotFoundOnIncremental>
+                  <overWrite>true</overWrite>
                 </configuration>
               </execution>
             </executions>
