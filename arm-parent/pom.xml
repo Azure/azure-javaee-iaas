@@ -14,7 +14,7 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.10</version>
+  <version>1.0.11</version>
   <name>${project.artifactId}</name>
   <description></description>
 
@@ -84,6 +84,22 @@
                   <excludes>
                     <exclude>/modules/_pids/_pid-dev.bicep</exclude>
                   </excludes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-resources-04</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/cli</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/main/cli</directory>
                   <filtering>true</filtering>
                 </resource>
               </resources>
