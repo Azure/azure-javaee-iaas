@@ -14,13 +14,13 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.11</version>
+  <version>1.0.12</version>
   <name>${project.artifactId}</name>
   <description></description>
 
   <properties>
-    <git.tag>master</git.tag>
-    <git.repo>wls-eng</git.repo>
+    <git.tag>main</git.tag>
+    <git.repo>weblogic-azure</git.repo>
     <artifactsLocationBase>https://raw.githubusercontent.com/${git.repo}</artifactsLocationBase>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <arm.assembly.version>1.0.3</arm.assembly.version>
