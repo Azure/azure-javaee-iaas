@@ -14,14 +14,14 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.12</version>
+  <version>1.0.13</version>
   <name>${project.artifactId}</name>
   <description></description>
 
   <properties>
     <git.tag>main</git.tag>
     <git.repo>weblogic-azure</git.repo>
-    <artifactsLocationBase>https://raw.githubusercontent.com/${git.repo}</artifactsLocationBase>
+    <artifactsLocationBase>https://raw.githubusercontent.com/oracle/${git.repo}</artifactsLocationBase>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <arm.assembly.version>1.0.3</arm.assembly.version>
     <template.validation.tests.directory>${basedir}/../arm-ttk/arm-ttk</template.validation.tests.directory>
@@ -191,6 +191,55 @@
       </build>
     </profile>
     <profile>
+      <id>bicep-dev</id>
+      <properties>
+        <template.version.visible>true</template.version.visible>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.coderplus.maven.plugins</groupId>
+            <artifactId>copy-rename-maven-plugin</artifactId>
+            <version>1.0.1</version>
+            <executions>
+              <execution>
+                <id>copy-resources-04</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>copy</goal>
+                </goals>
+                <configuration>
+                  <sourceFile>src/main/bicep/modules/_pids/_pid-dev.bicep</sourceFile>
+                  <destinationFile>${project.build.directory}/bicep/modules/_pids/_pid.bicep</destinationFile>
+                  <ignoreFileNotFoundOnIncremental>true</ignoreFileNotFoundOnIncremental>
+                  <overWrite>true</overWrite>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.6.0</version>
+            <executions>
+              <execution>
+                <id>transpile-01</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <workingDirectory>${project.build.directory}/bicep</workingDirectory>
+                  <executable>bicep</executable>
+                  <commandlineArgs>build --outdir ${project.build.directory}/arm ${project.build.directory}/bicep/mainTemplate.bicep</commandlineArgs>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
       <id>assembly</id>
       <build>
         <plugins>
@@ -249,26 +298,6 @@
                   <urls>
                     <url>${template.microsoft.pid.properties.url}</url>
                   </urls>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>com.coderplus.maven.plugins</groupId>
-            <artifactId>copy-rename-maven-plugin</artifactId>
-            <version>1.0.1</version>
-            <executions>
-              <execution>
-                <id>copy-resources-04</id>
-                <phase>process-resources</phase>
-                <goals>
-                  <goal>copy</goal>
-                </goals>
-                <configuration>
-                  <sourceFile>src/main/bicep/modules/_pids/_pid-dev.bicep</sourceFile>
-                  <destinationFile>${project.build.directory}/bicep/modules/_pids/_pid.bicep</destinationFile>
-                  <ignoreFileNotFoundOnIncremental>true</ignoreFileNotFoundOnIncremental>
-                  <overWrite>true</overWrite>
                 </configuration>
               </execution>
             </executions>
