@@ -14,7 +14,7 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.13</version>
+  <version>1.0.14</version>
   <name>${project.artifactId}</name>
   <description></description>
 
@@ -66,6 +66,10 @@
                 <resource>
                   <directory>src/main/scripts</directory>
                   <filtering>true</filtering>
+                </resource>
+                <resource>
+                  <directory>src/main/bin</directory>
+                  <filtering>false</filtering>
                 </resource>
               </resources>
             </configuration>
