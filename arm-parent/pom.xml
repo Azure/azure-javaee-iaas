@@ -14,7 +14,7 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.14</version>
+  <version>1.0.15</version>
   <name>${project.artifactId}</name>
   <description></description>
 
@@ -109,6 +109,26 @@
               </resources>
             </configuration>
           </execution>
+          <execution>
+            <id>copy-resources-05</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/arm/utilities/custom-hostname-verifier</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>../utilities/custom-hostname-verifier</directory>
+                  <filtering>true</filtering>
+                </resource>
+                <resource>
+                  <directory>../../utilities/custom-hostname-verifier</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>          
         </executions>
       </plugin>
     </plugins>
