@@ -16,6 +16,7 @@
         <include>mainTemplate.json</include>
         <include>nestedtemplates/**</include>
         <include>**/scripts/*</include>
+        <include>**/bin/*</include>
         <include>utilities/**</include>
       </includes>
     </fileSet>
