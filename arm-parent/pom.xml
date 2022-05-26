@@ -14,13 +14,14 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.16</version>
+  <version>1.0.17</version>
   <name>${project.artifactId}</name>
   <description></description>
 
   <properties>
     <git.tag>main</git.tag>
     <git.repo>weblogic-azure</git.repo>
+    <git.repo.owner>oracle</git.repo.owner>
     <artifactsLocationBase>https://raw.githubusercontent.com/oracle/${git.repo}</artifactsLocationBase>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <arm.assembly.version>1.0.4</arm.assembly.version>
