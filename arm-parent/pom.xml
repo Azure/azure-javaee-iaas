@@ -14,7 +14,7 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.16</version>
+  <version>1.0.17</version>
   <name>${project.artifactId}</name>
   <description></description>
 
@@ -27,6 +27,7 @@
     <template.validation.tests.directory>${basedir}/../arm-ttk/arm-ttk</template.validation.tests.directory>
     <test.args>-Test all</test.args>
     <test.parameters></test.parameters>
+    <test.skip>-Skip apiVersions-Should-Be-Recent-In-Reference-Functions,apiVersions-Should-Be-Recent</test.skip>
     <template.pid.properties.url>https://raw.githubusercontent.com/Azure/azure-javaee-iaas/master/arm-parent/src/main/resources/default.properties</template.pid.properties.url>
     <template.microsoft.pid.properties.url>${template.pid.properties.url}</template.microsoft.pid.properties.url>
   </properties>
@@ -194,7 +195,7 @@
             <configuration>
               <workingDirectory>${template.validation.tests.directory}</workingDirectory>
               <executable>sh</executable>
-              <commandlineArgs>Test-AzTemplate.sh -TemplatePath ${project.build.directory}/arm ${test.args} ${test.parameters}</commandlineArgs>
+              <commandlineArgs>Test-AzTemplate.sh -TemplatePath ${project.build.directory}/arm ${test.args} ${test.skip} ${test.parameters}</commandlineArgs>
             </configuration>
           </plugin>
         </plugins>
