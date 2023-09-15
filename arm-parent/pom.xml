@@ -30,6 +30,7 @@
     <test.skip></test.skip>
     <template.pid.properties.url>https://raw.githubusercontent.com/Azure/azure-javaee-iaas/main/arm-parent/src/main/resources/default.properties</template.pid.properties.url>
     <template.microsoft.pid.properties.url>${template.pid.properties.url}</template.microsoft.pid.properties.url>
+    <template.azure-common.properties.url>${template.pid.properties.url}</template.azure-common.properties.url>
   </properties>
 
   <build>
@@ -334,6 +335,7 @@
                 <configuration>
                   <urls>
                     <url>${template.microsoft.pid.properties.url}</url>
+                    <url>${template.azure-common.properties.url}</url>
                   </urls>
                 </configuration>
               </execution>
@@ -368,6 +370,7 @@
                 <configuration>
                   <urls>
                     <url>${template.pid.properties.url}</url>
+                    <url>${template.azure-common.properties.url}</url>
                   </urls>
                 </configuration>
               </execution>
