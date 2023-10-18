@@ -14,13 +14,14 @@
   <groupId>com.microsoft.azure.iaas</groupId>
   <artifactId>azure-javaee-iaas-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.19</version>
+  <version>1.0.20</version>
   <name>${project.artifactId}</name>
   <description></description>
 
   <properties>
     <git.tag>main</git.tag>
     <git.repo>weblogic-azure</git.repo>
+    <skip.exec.plugin>false</skip.exec.plugin>
     <artifactsLocationBase>https://raw.githubusercontent.com/oracle/${git.repo}</artifactsLocationBase>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <arm.assembly.version>1.0.4</arm.assembly.version>
@@ -194,6 +195,7 @@
               </execution>
             </executions>
             <configuration>
+              <skip>${skip.exec.plugin}</skip>
               <workingDirectory>${template.validation.tests.directory}</workingDirectory>
               <executable>sh</executable>
               <commandlineArgs>Test-AzTemplate.sh -TemplatePath ${project.build.directory}/arm ${test.args} ${test.skip} ${test.parameters}</commandlineArgs>
@@ -218,6 +220,7 @@
                   <goal>exec</goal>
                 </goals>
                 <configuration>
+                  <skip>${skip.exec.plugin}</skip>
                   <workingDirectory>${project.build.directory}/bicep</workingDirectory>
                   <executable>bicep</executable>
                   <commandlineArgs>build --outdir ${project.build.directory}/arm ${project.build.directory}/bicep/mainTemplate.bicep</commandlineArgs>
@@ -267,6 +270,7 @@
                   <goal>exec</goal>
                 </goals>
                 <configuration>
+                  <skip>${skip.exec.plugin}</skip>
                   <workingDirectory>${project.build.directory}/bicep</workingDirectory>
                   <executable>bicep</executable>
                   <commandlineArgs>build --outdir ${project.build.directory}/arm ${project.build.directory}/bicep/mainTemplate.bicep</commandlineArgs>
