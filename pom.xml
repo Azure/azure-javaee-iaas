@@ -17,7 +17,7 @@
     <version>1.0.0</version>
     <name>${project.artifactId}</name>
     <description>
-        
+
     </description>
     <url>https://github.com/Azure/azure-javaee-iaas</url>
 
@@ -27,7 +27,7 @@
         <url>https://github.com/Azure/azure-javaee-iaas</url>
         <tag>HEAD</tag>
     </scm>
-    
+
     <licenses>
         <license>
             <name>MIT</name>
@@ -35,6 +35,14 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub azure-javaee Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/azure-javaee/azure-javaee-iaas</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
       <artifactsLocationBase>https://raw.githubusercontent.com/wls-eng</artifactsLocationBase>
