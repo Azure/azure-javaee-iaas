@@ -38,9 +38,9 @@
 
     <distributionManagement>
         <repository>
-            <id>azure-javaee-iaas-parent</id>
-            <name>GitHub azure-javaee-iaas-parent Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/azure-javaee/azure-javaee-iaas-parent</url>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/azure-javaee/azure-javaee-iaas</url>
         </repository>
     </distributionManagement>
 
