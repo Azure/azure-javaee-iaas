@@ -34,6 +34,14 @@
     <template.azure-common.properties.url>${template.pid.properties.url}</template.azure-common.properties.url>
   </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/azure-javaee/azure-javaee-iaas</url>
+        </repository>
+    </distributionManagement>
+
   <build>
     <plugins>
       <plugin>
