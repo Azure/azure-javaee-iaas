@@ -18,12 +18,12 @@ jobs:
       - name: Publish arm-parent package
         run: |
           cd $GITHUB_WORKSPACE/arm-assembly
-          mvn --batch-mode deploy
+          mvn deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish arm-parent package
         run: |
           cd $GITHUB_WORKSPACE/arm-parent
-          mvn --batch-mode deploy
+          mvn deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
