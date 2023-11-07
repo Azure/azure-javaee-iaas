@@ -21,7 +21,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/azure-javaee/azure-javaee-iaas</url>
+            <url>https://maven.pkg.github.com/${github.owner}/azure-javaee-iaas</url>
         </repository>
     </distributionManagement>
 </project>
