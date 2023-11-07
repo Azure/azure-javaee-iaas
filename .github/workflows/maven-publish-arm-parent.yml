@@ -1,4 +1,4 @@
-name: Publish package to GitHub Packages
+name: Publish arm-parent package to GitHub Packages
 on:
   release:
     types: [created]
@@ -15,12 +15,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: Publish arm-parent package
-        run: |
-          cd $GITHUB_WORKSPACE/arm-assembly
-          mvn deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish arm-parent package
         run: |
           cd $GITHUB_WORKSPACE/arm-parent
