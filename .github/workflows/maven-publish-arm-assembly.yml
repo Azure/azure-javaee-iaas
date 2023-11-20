@@ -1,0 +1,24 @@
+name: Publish arm-assembly package to GitHub Packages
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Publish arm-assembly package
+        run: |
+          cd $GITHUB_WORKSPACE/arm-assembly
+          # `github.repository_owner` is the build-in context value
+          mvn deploy -Dgithub.owner=${{ github.repository_owner }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

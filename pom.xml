@@ -17,7 +17,7 @@
     <version>1.0.0</version>
     <name>${project.artifactId}</name>
     <description>
-        
+
     </description>
     <url>https://github.com/Azure/azure-javaee-iaas</url>
 
@@ -27,7 +27,7 @@
         <url>https://github.com/Azure/azure-javaee-iaas</url>
         <tag>HEAD</tag>
     </scm>
-    
+
     <licenses>
         <license>
             <name>MIT</name>
@@ -38,6 +38,7 @@
 
     <properties>
       <artifactsLocationBase>https://raw.githubusercontent.com/wls-eng</artifactsLocationBase>
+      <github.owner>azure-javaee</github.owner>
     </properties>
 
     <modules>
