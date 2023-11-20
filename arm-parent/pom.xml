@@ -15,7 +15,7 @@
     <groupId>com.microsoft.azure.iaas</groupId>
     <artifactId>azure-javaee-iaas-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.20</version>
+    <version>1.0.21</version>
     <name>${project.artifactId}</name>
     <description></description>
 
