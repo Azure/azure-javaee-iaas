@@ -23,6 +23,7 @@
         <git.tag>main</git.tag>
         <git.repo>weblogic-azure</git.repo>
         <skip.exec.plugin>false</skip.exec.plugin>
+        <skip.arm-ttk.test>false</skip.arm-ttk.test>
         <artifactsLocationBase>https://raw.githubusercontent.com/oracle/${git.repo}</artifactsLocationBase>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <arm.assembly.version>1.0.4</arm.assembly.version>
@@ -207,7 +208,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <skip>${skip.exec.plugin}</skip>
+                            <skip>${skip.exec.plugin} || ${skip.arm-ttk.test}</skip>
                             <workingDirectory>${template.validation.tests.directory}</workingDirectory>
                             <executable>sh</executable>
                             <commandlineArgs>Test-AzTemplate.sh -TemplatePath ${project.build.directory}/arm
