@@ -21,9 +21,9 @@
 
     <properties>
         <git.tag>main</git.tag>
-        <git.repo>weblogic-azure</git.repo>
-        <skip.exec.plugin>false</skip.exec.plugin>
+        <git.repo>weblogic-azure</git.repo>        
         <skip.armttk.test>false</skip.armttk.test>
+        <skip.bicep.exec>false</skip.bicep.exec>
         <artifactsLocationBase>https://raw.githubusercontent.com/oracle/${git.repo}</artifactsLocationBase>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <arm.assembly.version>1.0.4</arm.assembly.version>
@@ -235,7 +235,7 @@
                                     <goal>exec</goal>
                                 </goals>
                                 <configuration>
-                                    <skip>${skip.exec.plugin}</skip>
+                                    <skip>${skip.bicep.exec}</skip>
                                     <workingDirectory>${project.build.directory}/bicep</workingDirectory>
                                     <executable>bicep</executable>
                                     <commandlineArgs>build --outdir ${project.build.directory}/arm
@@ -288,7 +288,7 @@
                                     <goal>exec</goal>
                                 </goals>
                                 <configuration>
-                                    <skip>${skip.exec.plugin}</skip>
+                                    <skip>${skip.bicep.exec}</skip>
                                     <workingDirectory>${project.build.directory}/bicep</workingDirectory>
                                     <executable>bicep</executable>
                                     <commandlineArgs>build --outdir ${project.build.directory}/arm
